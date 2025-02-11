@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# AWS credentials or private keys
+*.pem
+
+# Mac/Windows system files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+coverage/
+
+# IDE-specific files
+.vscode/
+.idea/
