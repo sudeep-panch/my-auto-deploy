@@ -1,0 +1,29 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment when pushing to main branch
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Use your Amazon Linux self-hosted runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Pull the latest code
+        run: |
+          cd /var/www/my-auto-deploy
+          git pull origin main
+
+      - name: Install Dependencies
+        run: |
+          cd /var/www/my-auto-deploy
+          npm install
+
+      - name: Restart PM2 Application
+        run: |
+          cd /var/www/my-auto-deploy
+          pm2 restart index || pm2 start index.js --name index
